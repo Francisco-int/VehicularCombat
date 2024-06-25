@@ -5,10 +5,11 @@ using UnityEngine;
 public class GunaVehicular : MonoBehaviour
 {
 
-    [SerializeField] float intervalShot;
+    public float intervalShot;
     [SerializeField] GameObject proyectil;
     [SerializeField] Transform pointShot;
     [SerializeField] bool ableDisparo;
+    public float forceShot;
 
 
 
@@ -31,7 +32,9 @@ public class GunaVehicular : MonoBehaviour
     IEnumerator Disparo()
     {
         Debug.Log("Disparo");
-        //Instantiate(proyectil, pointShot);
+        GameObject newBala = Instantiate(proyectil, pointShot.transform.position, Quaternion.identity);
+        Rigidbody rb = newBala.GetComponent<Rigidbody>();
+        rb.AddForce(pointShot.forward * forceShot, ForceMode.Impulse);
         yield return new WaitForSeconds(intervalShot);
         ableDisparo = true;
     }
