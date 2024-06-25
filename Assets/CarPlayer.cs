@@ -1,10 +1,11 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Fusion;
 
-public class CarPlayer : NetworkBehaviour
+
+public class CarPlayer : MonoBehaviourPunCallbacks
 {
 
     [SerializeField] int vida;
@@ -19,29 +20,38 @@ public class CarPlayer : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(transform.position.y <= -20)
+        if (photonView.IsMine)
+        {
+if (transform.position.y <= -20)
         {
             SceneManager.LoadScene(0);
         } 
+        }
+
+            
     }
     private void OnCollisionEnter(Collision collision)
     {
-        //if (collision.gameObject.CompareTag("Bala"))
-        //{
-        //    vida--;
-        //    if(vida == 0)
-        //    {
-        //        //ff
-        //    }
-        //}
-        if (collision.gameObject.CompareTag("Force"))
+        if (photonView.IsMine)
         {
-            StartCoroutine(ForceShot());
+            //if (collision.gameObject.CompareTag("Bala"))
+            //{
+            //    vida--;
+            //    if(vida == 0)
+            //    {
+            //        //ff
+            //    }
+            //}
+            if (collision.gameObject.CompareTag("Force"))
+            {
+                StartCoroutine(ForceShot());
+            }
+            if (collision.gameObject.CompareTag("Interval"))
+            {
+                StartCoroutine(InvertaloShot());
+            }
         }
-        if (collision.gameObject.CompareTag("Interval"))
-        {
-            StartCoroutine(InvertaloShot());
-        }
+            
     }
 
     IEnumerator InvertaloShot()

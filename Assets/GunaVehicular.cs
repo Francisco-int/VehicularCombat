@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class GunaVehicular : MonoBehaviour
+public class GunaVehicular : MonoBehaviourPunCallbacks
 {
 
     public float intervalShot;
@@ -22,12 +23,16 @@ public class GunaVehicular : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.F) && ableDisparo == true)
+        if (photonView.IsMine)
+        {
+if (Input.GetKey(KeyCode.F) && ableDisparo == true)
         {
             ableDisparo = false;
             StartCoroutine(Disparo());
             Debug.Log("Disparo Metodo llamado");
         }
+        }
+            
     }
     IEnumerator Disparo()
     {

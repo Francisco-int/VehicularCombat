@@ -1,8 +1,9 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
-public class CarControl : MonoBehaviourPunCallbacks
+
+public class EnemyCarControl : MonoBehaviour
 {
     public float motorTorque = 2000;
     public float brakeTorque = 2000;
@@ -17,24 +18,19 @@ public class CarControl : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        if (photonView.IsMine)
-        {
-  rigidBody = GetComponent<Rigidbody>();
+        rigidBody = GetComponent<Rigidbody>();
 
         // Adjust center of mass vertically, to help prevent the car from rolling
         rigidBody.centerOfMass += Vector3.up * centreOfGravityOffset;
 
         // Find all child GameObjects that have the WheelControl script attached
         wheels = GetComponentsInChildren<WheelControl>();
-        }
-            
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (photonView.IsMine)
-        {
+      
             float vInput = Input.GetAxis("Vertical");
             float hInput = Input.GetAxis("Horizontal");
 
@@ -85,7 +81,5 @@ public class CarControl : MonoBehaviourPunCallbacks
                 }
             }
         }
-
-        
     }
-}
+
