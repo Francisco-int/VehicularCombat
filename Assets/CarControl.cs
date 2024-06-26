@@ -33,7 +33,7 @@ public class CarControl : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if (photonView.IsMine)
+        if (!photonView.IsMine)
         {
             float vInput = Input.GetAxis("Vertical");
             float hInput = Input.GetAxis("Horizontal");

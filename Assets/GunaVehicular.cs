@@ -23,7 +23,7 @@ public class GunaVehicular : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if (photonView.IsMine)
+        if (!photonView.IsMine)
         {
 if (Input.GetKey(KeyCode.F) && ableDisparo == true)
         {
