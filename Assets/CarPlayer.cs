@@ -10,7 +10,8 @@ public class CarPlayer : MonoBehaviourPunCallbacks
 
     [SerializeField] int vida;
     [SerializeField] GunaVehicular gunaVehicular;
-
+    [SerializeField] float powerUpTimer;
+    [SerializeField] Transform restart;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,7 @@ public class CarPlayer : MonoBehaviourPunCallbacks
         {
 if (transform.position.y <= -20)
         {
-            SceneManager.LoadScene(0);
+            transform.position = restart.position;
         } 
         }
 
@@ -45,10 +46,12 @@ if (transform.position.y <= -20)
             if (collision.gameObject.CompareTag("Force"))
             {
                 StartCoroutine(ForceShot());
+                Destroy(collision.gameObject);
             }
             if (collision.gameObject.CompareTag("Interval"))
             {
                 StartCoroutine(InvertaloShot());
+                Destroy(collision.gameObject);
             }
         }
             
@@ -57,14 +60,16 @@ if (transform.position.y <= -20)
     IEnumerator InvertaloShot()
     {
         gunaVehicular.intervalShot = 0.3f;
-        yield return new WaitForSeconds(30);
-        gunaVehicular.intervalShot = 1;
+        yield return new WaitForSeconds(powerUpTimer);
+        gunaVehicular.intervalShot = 0.7f;
     }
 
     IEnumerator ForceShot()
     {
         gunaVehicular.forceShot = 17000;
-        yield return new WaitForSeconds(30);
-        gunaVehicular.intervalShot = 10000;
+        gunaVehicular.intervalShot = 1f;
+        yield return new WaitForSeconds(powerUpTimer);
+        gunaVehicular.intervalShot = 0.7f;
+        gunaVehicular.forceShot = 10000;
     }
 }

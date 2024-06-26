@@ -24,11 +24,11 @@ public class SpawnManager : MonoBehaviour
         // Generamos una posición aleatoria para el primer objeto
         Vector3 randomPosition1 = new Vector3(
             Random.Range(spawnRangeX, -spawnRangeX),2,
-            Random.Range(spawnRangeZ, spawnRangeZ)
+            Random.Range(spawnRangeZ, -spawnRangeZ)
         );
 
         // Generamos una posición aleatoria para el segundo objeto
-        Vector2 randomPosition2 = new Vector3(
+        Vector3 randomPosition2 = new Vector3(
             Random.Range(spawnRangeX, -spawnRangeX), 2,
             Random.Range(spawnRangeZ, -spawnRangeZ)
         );

@@ -739,6 +739,11 @@ PrefabInstance:
       propertyPath: pointShot
       value: 
       objectReference: {fileID: 5996502869713071990}
+    - target: {fileID: 627587667067505992, guid: 7b6c2df52696fb24bac535147117e57f,
+        type: 3}
+      propertyPath: intervalShot
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 2420886204145543977, guid: 7b6c2df52696fb24bac535147117e57f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -805,6 +810,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3094948227108242540}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2469895279583332644 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 627587667067505992, guid: 7b6c2df52696fb24bac535147117e57f,
+    type: 3}
+  m_PrefabInstance: {fileID: 3094948227108242540}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93efb6d15017b540832eba4645bf784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4435758871410100166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -920,6 +937,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7310187100661321973}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 59e5792fad5a62042b279de1f6c0617a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2594257444192135466}
     - targetCorrespondingSourceObject: {fileID: -5287916851642620284, guid: 59e5792fad5a62042b279de1f6c0617a,
         type: 3}
       insertIndex: -1
@@ -1094,6 +1115,22 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &2594257444192135466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3553220126010702487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 363b638e4ab118447987ce1c94f10e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vida: 0
+  gunaVehicular: {fileID: 2469895279583332644}
+  powerUpTimer: 5
+  restart: {fileID: 8543903011860326369, guid: 41ffb968b02bc5e4f9dc5c1770389ccc, type: 3}
 --- !u!4 &4180539249920221229 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 59e5792fad5a62042b279de1f6c0617a,
