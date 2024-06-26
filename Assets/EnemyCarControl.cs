@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class EnemyCarControl : MonoBehaviour
 {
+
+    [SerializeField] float velocidad;
+
     public float motorTorque = 2000;
     public float brakeTorque = 2000;
     public float maxSpeed = 20;
@@ -14,6 +17,8 @@ public class EnemyCarControl : MonoBehaviour
 
     WheelControl[] wheels;
     Rigidbody rigidBody;
+    [SerializeField] float hInput;
+    [SerializeField] Transform player;
 
     // Start is called before the first frame update
     void Start()
@@ -30,9 +35,12 @@ public class EnemyCarControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
-            float vInput = Input.GetAxis("Vertical");
-            float hInput = Input.GetAxis("Horizontal");
+              float vInput = velocidad;
+
+        Vector3 direction = player.position - transform.position;
+        float angleRadians = Mathf.Atan2(direction.y, direction.x);
+        float angleDegrees = angleRadians * Mathf.Rad2Deg;
+        hInput = angleDegrees;
 
             // Calculate current speed in relation to the forward direction of the car
             // (this returns a negative number when traveling backwards)
